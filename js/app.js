@@ -1,10 +1,11 @@
-function render(todoList) {
+let tBody = document.querySelector("#tBody");
+let form = document.querySelector("#form");
 
+function render(todoList) {
   let index = 0;
   tBody.innerHTML = "";
 
   todoList.forEach((item) => {
-
     let trBody = document.createElement("tr");
     trBody.className = "border text-center";
     let tdName = document.createElement("td");
@@ -25,12 +26,12 @@ function render(todoList) {
     editBtn.setAttribute("onclick", `newTahrirlash(${index})`);
     editBtn.setAttribute("data-bs-target", "#navbarTop");
     editBtn.setAttribute("data-bs-toggle", "offcanvas");
-  
+
     tdName.innerText = item.name;
     tdFname.innerText = item.fname;
     tdLavozim.innerText = item.lavozim;
     tdTelefon.innerText = item.telefon;
-   
+
     tdDeleteBtn.appendChild(deleteBtn);
     tdEditBtn.appendChild(editBtn);
     trBody.appendChild(tdName);
@@ -40,19 +41,15 @@ function render(todoList) {
     trBody.appendChild(tdEditBtn);
     trBody.appendChild(tdDeleteBtn);
     tBody.appendChild(trBody);
-    index++
+    index++;
   });
-};
-
-let tBody = document.querySelector("#tBody");
-let clear = document.querySelector("#clear");
-let form = document.querySelector("#form");
+}
 
 let bush = [];
 
 form.addEventListener("submit", function (e) {
   e.preventDefault();
-  
+
   let name = document.querySelector("#name").value;
   let fname = document.querySelector("#fname").value;
   let lavozim = document.querySelector("#lavozim").value;
@@ -83,8 +80,7 @@ function newTahrirlash(index) {
   document.querySelector("#offname").value = bush[index].fname;
   document.querySelector("#offlavozim").value = bush[index].lavozim;
   document.querySelector("#offtelefon").value = bush[index].telefon;
-};
-
+}
 
 editForm.addEventListener("submit", function (e) {
   e.preventDefault();
@@ -101,4 +97,3 @@ editForm.addEventListener("submit", function (e) {
   document.querySelector("#offlavozim").value = "";
   document.querySelector("#offtelefon").value = "";
 });
-
