@@ -1,52 +1,55 @@
-function render(qator) {
+function render(todoList) {
+
   let index = 0;
   tBody.innerHTML = "";
 
-  qator.forEach((item) => {
+  todoList.forEach((item) => {
+
     let trBody = document.createElement("tr");
     trBody.className = "border text-center";
     let tdName = document.createElement("td");
     let tdFname = document.createElement("td");
     let tdLavozim = document.createElement("td");
     let tdTelefon = document.createElement("td");
-    let tdBtn = document.createElement("td");
-    let tdBtn1 = document.createElement("td");
+    let tdDeleteBtn = document.createElement("td");
+    let tdEditBtn = document.createElement("td");
 
-    let btn = document.createElement("button");
-    btn.innerText = "O'chirish";
-    btn.classList.add("btn", "btn-danger");
-    btn.setAttribute("onclick", `newIndex(${index})`);
+    let deleteBtn = document.createElement("button");
+    deleteBtn.innerText = "O'chirish";
+    deleteBtn.classList.add("btn", "btn-danger");
+    deleteBtn.setAttribute("onclick", `newIndex(${index})`);
 
-    let btn1 = document.createElement("button");
-    btn1.innerText = "Tahrirlash";
-    btn1.classList.add("btn", "btn-success");
-    btn1.setAttribute("onclick", `newTahrirlash(${index})`);
-    btn1.setAttribute("data-bs-target", "#navbarTop");
-    btn1.setAttribute("data-bs-toggle", "offcanvas");
+    let editBtn = document.createElement("button");
+    editBtn.innerText = "Tahrirlash";
+    editBtn.classList.add("btn", "btn-success");
+    editBtn.setAttribute("onclick", `newTahrirlash(${index})`);
+    editBtn.setAttribute("data-bs-target", "#navbarTop");
+    editBtn.setAttribute("data-bs-toggle", "offcanvas");
   
     tdName.innerText = item.name;
     tdFname.innerText = item.fname;
     tdLavozim.innerText = item.lavozim;
     tdTelefon.innerText = item.telefon;
    
-    tdBtn.appendChild(btn);
-    tdBtn1.appendChild(btn1);
+    tdDeleteBtn.appendChild(deleteBtn);
+    tdEditBtn.appendChild(editBtn);
     trBody.appendChild(tdName);
     trBody.appendChild(tdFname);
     trBody.appendChild(tdLavozim);
     trBody.appendChild(tdTelefon);
-    trBody.appendChild(tdBtn1);
-    trBody.appendChild(tdBtn);
+    trBody.appendChild(tdEditBtn);
+    trBody.appendChild(tdDeleteBtn);
     tBody.appendChild(trBody);
     index++
   });
-}
+};
 
 let tBody = document.querySelector("#tBody");
 let clear = document.querySelector("#clear");
 let form = document.querySelector("#form");
 
 let bush = [];
+
 form.addEventListener("submit", function (e) {
   e.preventDefault();
   
@@ -61,6 +64,7 @@ form.addEventListener("submit", function (e) {
     lavozim: lavozim,
     telefon: telefon,
   });
+
   e.target.reset();
   render(bush);
 });
@@ -70,7 +74,7 @@ function newIndex(index) {
   render(bush);
 }
 
-let tahrirForm = document.querySelector(".tahrirForm");
+let editForm = document.querySelector("#editForm");
 let editIndex;
 
 function newTahrirlash(index) {
@@ -82,7 +86,7 @@ function newTahrirlash(index) {
 };
 
 
-tahrirForm.addEventListener("submit", function (e) {
+editForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
   bush[editIndex].name = document.querySelector("#ofname").value;
