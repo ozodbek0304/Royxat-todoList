@@ -10,11 +10,21 @@
 <body>
     <div class="container py-5 ">
         <h1 class="text-center pb-3 display-2">Ro'yxat</h1>
+      <div class="d-flex mb-3 gap-3">
+     <input type="search" id="search" class="form-control w-75 " placeholder="Search...">
+     <select   class="form-select w-25">
+         <option selected value="">All</option>
+         <option  class=" optionIsm" value="name">Ism</option>
+         <option class=" optionFamiliya" value="fname">Familiyasi</option>
+         <option class=" optionLavozim" value="lavozim">Lavozim</option>
+         <option class=" optionTelefon" value="telefon">Telefon</option>
+     </select>
+      </div>
         <form class="d-flex gap-3 pb-3 " id="form">
-   <input required  class="fs-5 form-control" type="text" id="name" placeholder="Ism">
- <input required  class="fs-5 form-control" type="text"  id="fname" placeholder="Familiya">
-<input required  class="fs-5 form-control" type="text"  id="lavozim" placeholder="Lavozim">
-<input required  class="fs-5 form-control" type="tel"  id="telefon" placeholder="Telefon">
+   <input   class="fs-5 form-control" type="text" id="name" placeholder="Ism">
+ <input   class="fs-5 form-control" type="text"  id="fname" placeholder="Familiya">
+<input   class="fs-5 form-control" type="text"  id="lavozim" placeholder="Lavozim">
+<input   class="fs-5 form-control" type="tel"  id="telefon" placeholder="Telefon">
 <button type="submit" class="btn btn-primary d-block">Qo'ishish</button>
         </form>
   <table class="table table-striped fs-5" >

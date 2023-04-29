@@ -97,3 +97,24 @@ editForm.addEventListener("submit", function (e) {
   document.querySelector("#offlavozim").value = "";
   document.querySelector("#offtelefon").value = "";
 });
+
+let searchInput = document.querySelector("#search");
+
+searchInput.addEventListener("input", function (e) {
+  let text = e.target.value;
+  let filtirSearch = bush.filter(item => {
+    return (
+      item.name.toLowerCase().includes(text.toLowerCase()) ||
+      item.fname.toLowerCase().includes(text.toLowerCase()) ||
+      item.lavozim.toLowerCase().includes(text.toLowerCase())
+    );
+  })
+  render(filtirSearch);
+});
+
+let select = document.querySelector("select");
+let optionIsm = document.querySelector(".optionIsm");
+let optionFamiliya = document.querySelector(".optionFamiliya");
+let optionLavozim = document.querySelector(".optionLavozim");
+let optionTelefon = document.querySelector(".optionTelefon");
+
